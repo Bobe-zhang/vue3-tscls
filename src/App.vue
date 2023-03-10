@@ -9,8 +9,9 @@
             </template>
             <el-menu-item-group>
               <template #title>Group 1</template>
-              <el-menu-item index="1-1">Option 1</el-menu-item>
-              <el-menu-item index="1-2">Option 2</el-menu-item>
+              <el-menu-item v-for="(item, index) in routers" :key="index">
+                <router-link :to="item.path">{{ item.label }}</router-link>
+              </el-menu-item>
             </el-menu-item-group>
             <el-menu-item-group title="Group 2">
               <el-menu-item index="1-3">Option 3</el-menu-item>
@@ -63,7 +64,7 @@
         <div class="toolbar">
           <el-dropdown>
             <el-icon style="margin-right: 8px; margin-top: 1px"
-            ><setting
+              ><setting
             /></el-icon>
             <template #dropdown>
               <el-dropdown-menu>
@@ -79,11 +80,7 @@
 
       <el-main>
         <el-scrollbar>
-          <el-table :data="tableData">
-            <el-table-column prop="date" label="Date" width="140" />
-            <el-table-column prop="name" label="Name" width="120" />
-            <el-table-column prop="address" label="Address" />
-          </el-table>
+          <router-view></router-view>
         </el-scrollbar>
       </el-main>
     </el-container>
@@ -91,15 +88,19 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-import { Menu as IconMenu, Message, Setting } from '@element-plus/icons-vue'
+import { ref } from "vue";
+import { Menu as IconMenu, Message, Setting } from "@element-plus/icons-vue";
 
 const item = {
-  date: '2016-05-02',
-  name: 'Tom',
-  address: 'No. 189, Grove St, Los Angeles',
-}
-const tableData = ref(Array.from({ length: 20 }).fill(item))
+  date: "2016-05-02",
+  name: "Tom",
+  address: "No. 189, Grove St, Los Angeles",
+};
+const tableData = ref(Array.from({ length: 20 }).fill(item));
+const routers = ref([
+  { path: "/el-form", label: "el-form" },
+  { path: "/el-tree", label: "el-tree" },
+]);
 </script>
 
 <style scoped>

@@ -30,7 +30,7 @@ router.beforeEach((to, from, next) => {
   if (!isTrue) {
     const route = {
       path: to.fullPath,
-      component: () => import(`../component${to.fullPath}.vue`),
+      component: () => import(`../components${to.fullPath}.vue`),
     };
     router.addRoute(route);
     routes.push(route);

@@ -1,6 +1,24 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
-import store from './store'
+import { createApp } from "vue";
+import App from "./App.vue";
+import router from "./router";
+import store from "./store";
 
-createApp(App).use(store).use(router).mount('#app')
+import ElementPlus from "element-plus";
+import "element-plus/dist/index.css";
+
+import ViewUIPlus from "view-ui-plus";
+import "view-ui-plus/dist/styles/viewuiplus.css";
+
+import VXETable from "vxe-table";
+import "vxe-table/lib/style.css";
+
+import WujieVue from "wujie-vue3";
+
+createApp(App)
+  .use(store)
+  .use(router)
+  .use(ElementPlus)
+  .use(ViewUIPlus)
+  .use(VXETable)
+  .use(WujieVue)
+  .mount("#app");
